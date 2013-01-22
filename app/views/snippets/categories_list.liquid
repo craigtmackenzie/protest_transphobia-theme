@@ -1,0 +1,8 @@
+        <div class="widget">
+          <h3 class="widget-title">Categories</h3>
+          <ul class="nav">
+              {% for category in contents.categories %}
+              <li><a href="/categories/{{ category._permalink}}">{{ category.title }}</a></li>
+              {% endfor %}
+          </ul>
+        </div>

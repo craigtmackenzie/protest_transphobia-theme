@@ -1,0 +1,52 @@
+{% extends parent %}
+
+{% block content %}
+
+    <div class="row">
+      <div class="span12">
+        <h2>
+          {% editable_short_text "title", hint: "The page title" %}
+          Contact Us
+          {% endeditable_short_text %}
+        </h2>
+        <hr>
+      </div>
+    </div>
+
+    <div class="row">
+        <div class="span5">
+        {% editable_long_text "main content", hint: "The main content on the page" %}
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat.</p>
+
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat.</p>
+
+          <br>
+          <p>
+            <strong><a href="mailto:contact@protest-transphobia.org?subject=feedback">contact@protest-transphobia.org</a></strong>
+          </p>
+          {% endeditable_long_text %}
+        </div>
+
+        <div class="span4">
+          <p><img src="{% editable_file "page image" %}images/bio-lg.jpg{% endeditable_file %}" class="thumbnail"></p>
+        </div>
+
+        <div class="span3 offset">
+          <h3>Connect With Us</h3>
+          {% editable_long_text "social media", hint: "Social media links" %}
+          <ul class="nav nav-vertical">
+            <li><a href="/">Twitter</a></li>
+            <li><a href="/">Facebook</a></li>
+            <li><a href="/">Flickr</a></li>
+          </ul>
+          {% endeditable_long_text %}
+        </div>
+    </div>
+
+{% endblock %}

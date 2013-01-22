@@ -1,0 +1,35 @@
+{% extends index %}
+
+{% block content %}
+
+    <div class="row">
+      <div class="span8">
+        <div class="row">
+            {% if entry.type == "Image" %}
+            <div class="span8 portfolio-large"><img src="{{ entry.image.url }}" alt="Placeholder" class="thumbnail"></div>
+            {% else %}
+            <div class="span8 portfolio-large">{{ entry.embed_code }}</div>
+            {% endif %}
+
+        </div>
+      </div>
+
+      <div class="span3 project-info">
+        <ul class="pager">
+          {% if entry.previous %}
+          <li class="previous">
+            <a href="/media/{{ entry.previous._permalink}}">&larr; Previous</a>
+          </li>
+          {% endif %}
+          {% if entry.next %}
+          <li class="next">
+            <a href="/media/{{ entry.next._permalink}}">Next &rarr;</a>
+          </li>
+          {% endif %}
+        </ul>
+        <h2>{{ entry.title }}</h2>
+        {{ entry.body }}
+      </div>
+    </div>
+
+{% endblock %}

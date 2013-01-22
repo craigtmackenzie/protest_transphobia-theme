@@ -1,0 +1,53 @@
+site:
+  name: Protest Transphobia
+
+  locales: [en]
+
+  seo_title: "Protest Transphobia - trans rights, protests, demos and resources"
+  meta_keywords: "trans protest transphobia transexual transgender"
+  meta_description: "Protest Transphobia is a collection of people aiming to challenge mainstream medias transphobic agenda"
+
+  pages:
+  - index:
+      title: Home page
+  - about:
+      title: About Us
+  - blog:
+      title: Blog
+  - blog/post:
+      title: Blog Post
+      listed: false
+      templatized: true
+      model: posts
+  - media:
+      title: Media
+  - media/entry:
+      title: Media Object
+      listed: false
+      templatized: true
+      model: media
+  - resources:
+      title: Resources
+  - get_involved:
+      title: Get Involved
+  - contact:
+      title: Contact
+
+  - articles/article:
+      title: Article Page
+      listed: false
+      templatized: true
+      model: articles
+  - templates/template:
+      title: Template page
+      listed: false
+      templatized: true
+      model: templates
+  - categories/category:
+      title: Category Page
+      listed: false
+      templatized: true
+      model: categories
+
+  - "404":
+      title: Page not found

@@ -1,0 +1,27 @@
+name: Media
+description: "A page containing either an image, video (from youtube for example) or audio (like a soundbite)"
+slug: media
+order_by: created_at
+label_field_name: title
+fields:
+- title:
+    hint: The title of your media
+    required: true
+- type:
+    type: select
+    select_options:
+        - Image
+        - Video
+        - Audio
+    hint: What type of media is this
+    required: true
+- embed_code:
+    type: text
+    hint: "For Video & Audio please past your embed code here"
+- image:
+    type: file
+    hint: "For images, the actual image you are posting, for video / audio a representiative image (used as a thumbnail)"
+- body:
+    type: text
+    text_formatting: html
+    hint: Supporting copy for this piece of media

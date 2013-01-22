@@ -1,0 +1,141 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>{{ site.name }}</title>
+
+{{ 'bootstrap.css' | stylesheet_tag }}
+{{ 'bootstrap-responsive.min.css' | stylesheet_tag }}
+{{ 'style.css' | stylesheet_tag }}
+<link href='http://fonts.googleapis.com/css?family=Oswald:400,700' rel='stylesheet' type='text/css'>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+{{ 'bootstrap.min.js' | javascript_tag }}
+{{ 'bootstrap-dropdown.js' | javascript_tag }}
+{% inline_editor %}
+</head>
+
+<body>
+  <div class="container">
+    <div id="header" class="row">
+      <div class="span5">
+        <h1 class="logo">
+          {{ 'logo.png' | theme_image_tag }}
+          <a href="/">{{ site.name }}</a>
+        </h1>
+      </div>
+      <div class="span7">
+        <ul class="navigation pull-right">
+          {% nav site, no_wrapper: true, bootstrap: true %}
+        </ul>
+      </div>
+    </div>
+
+    <!-- start of content -->
+
+    {% block content %}
+    <div class="row">
+      <div class="span12">
+        <div class="hero-unit">
+          <h2 class="lead">
+            {% editable_short_text "hero message", hint: "The hero message" %}
+            we are a group of people challenging mainstream media's transphobic agenda
+            {% endeditable_short_text %}
+          </h2>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+      <div class="span5">
+        <h3>Latest Blog Post</h3>
+        <h2><a href="/blog/{{ contents.posts.last._permalink }}">{{ contents.posts.last.title }}</a></h2>
+        <p>
+          {{ contents.posts.last.excerpt }}
+        </p>
+        <br>
+        <p><a href="/blog/{{ contents.posts.last._permalink }}"><strong>Continue reading</strong> <i class="icon-arrow-right icon-white"></i></a></p>
+      </div>
+
+      <div class="span4">
+            <h3>Latest Article</h3>
+            <h4><a href="/articles/{{ contents.articles.last._permalink }}">{{ contents.articles.last.title }}</a></h4>
+            <p>
+              {{ contents.articles.last.excerpt }}
+            </p>
+      </div>
+
+          <div class="span3">
+            <h3>Next Event</h3>
+            <h4>
+              {% editable_long_text "Next Event Title", hint: "make this link to facebook" %}
+              <a href="#">Title</a>
+              {% endeditable_long_text%}
+            </h4>
+            <dl class="dl-horizontal home-event">
+              <dt><i class="icon-calendar icon-white"></i> When:</dt>
+              <dd>
+              {% editable_short_text "Next Event Date / Time" %}
+              July 25, 2012
+              {% endeditable_short_text %}
+            </dd>
+              <dt><i class="icon-map-marker icon-white"></i> Where:</dt>
+              <dd>
+              {% editable_short_text "Next Event Location" %}
+              location
+              {% endeditable_short_text %}
+            </dd>
+            </dl>
+            <p>
+              {% editable_long_text "Next Event Description", hint: "include a link to event on facebook" %}
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
+              {% endeditable_long_text %}
+            </p>
+          </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+      <div class="span12">
+        <h3>Recent Media</h3>
+      </div>
+
+      {% for media_object in contents.media limit: 4 %}
+      {% include 'media_listing' with media_object %}
+      {% endfor %}
+
+      <div class="span12">
+        <p><a href="/media"><strong>View all media</strong> <i class="icon-arrow-right icon-white"></i> {{ media_object.title}}</a></p>
+      </div>
+    </div>
+    {% endblock %}
+
+    <!-- end of content -->
+
+    <div class="footer">
+      <div class="row">
+        <div class="span6">
+          <p>&copy; Copyright Protest Transphobia</p>
+        </div>
+        <div class="span6">
+          <ul class="row">
+            <li><a href="#">YouTube</a></li>
+            <li><a href="#">Flickr</a></li>
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">Facebook</a></li>
+            <li><strong>Protest Transphobia on:</strong></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="background">
+    {{ '010.jpg' | theme_image_tag }}
+  </div>
+
+</body>
+</html>

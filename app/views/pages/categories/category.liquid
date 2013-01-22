@@ -1,0 +1,80 @@
+{% extends index %}
+
+{% block content %}
+
+    {% assign normal_category = true %}
+
+    {% if entry.title == "Resources - Articles"%}
+      {% assign normal_category = false %}
+    {% endif %}
+    {% if entry.title == "Resources - Templates"%}
+      {% assign normal_category = false %}
+    {% endif %}
+
+    <div class="row">
+        <div class="span3">
+            <h2>{{ entry.title }}</h2>
+            <p>{{ entry.description }}</p>
+        </div>
+
+        {% if normal_category %}
+        <div class="span5">
+          <h2>Blog Posts</h2>
+          {% for post in entry.posts %}
+            <div class="blog-post row">
+                <div class="entry span5">
+                  <h3><a href="/blog/{{post._permalink}}">{{ post.title }}</a></h3>
+                  <p>
+                    {{ post.excerpt }}
+                  </p>
+                </div>
+            </div>
+          {% endfor %}
+        </div>
+
+        <div class="span4">
+            <h2>Articles</h2>
+            {% for article in entry.articles %}
+              <div class="blog-post row">
+                <div class="entry span4">
+                  <h3><a href="/articles/{{article._permalink}}">{{ article.title }}</a></h3>
+                  <p>
+                    {{ article.excerpt }}
+                  </p>
+                </div>
+              </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if entry.title == "Resources - Articles" %}
+        <div class="span9">
+          <h2>Articles</h2>
+          {% for article in entry.articles %}
+            <div class="blog-post row">
+                <div class="entry span8">
+                  <h3><a href="/articles/{{article._permalink}}">{{ article.title }}</a></h3>
+                  <p>
+                    {{ article.excerpt }}
+                  </p>
+                </div>
+            </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if entry.title == "Resources - Templates" %}
+        <div class="span9">
+          <h2>Templates</h2>
+          {% for template in entry.templates %}
+            <div class="blog-post row">
+                <div class="entry span8">
+                  <h3><a href="/templates/{{template._permalink}}">{{ template.title }}</a></h3>
+                </div>
+            </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends parent %}
+
+{% block content %}
+
+    <div class="row">
+      <div class="span6">
+        <h2><a href="/categories/resources-articles">Articles</a></h2>
+
+        {% for category in contents.categories %}
+          {% if category.title == "Resources - Articles" %}
+            {% assign article_category = category %}
+          {% endif %}
+        {% endfor %}
+
+        {% for article in article_category.articles limit: 4 %}
+        <div class="blog-post row">
+          <div class="entry span6">
+            <h3><a href="/articles/{{ article._permalink }}">{{ article.title }}</a></h3>
+            <p>
+              {{ article.excerpt }}
+            </p>
+          </div>
+        </div>
+        {% endfor %}
+
+        <p><a href="/categories/resources-articles"><strong>View all articles</strong> <i class="icon-arrow-right icon-white"></i></a></p>
+
+      </div>
+
+      <div class="span3">
+        <h2><a href="/categories/resources-templates">Templates</a></h2>
+
+        {% for category in contents.categories %}
+          {% if category.title == "Resources - Templates" %}
+            {% assign template_category = category %}
+          {% endif %}
+        {% endfor %}
+
+        <div class="blog-post row">
+          {% for template in template_category.templates %}
+          <div class="entry span3">
+            <h3><a href="/templates/{{ template._permalink }}">{{ template.title }}</a></h3>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="span3">
+        <h2>Links</h2>
+
+          <div class="blog-post row">
+            <div class="entry span3">
+            {% editable_long_text "links", hint: "interesting links for people to explore" %}
+            &nbsp;
+            {% endeditable_long_text %}
+            </div>
+          </div>
+      </div>
+    </div>
+
+{% endblock %}

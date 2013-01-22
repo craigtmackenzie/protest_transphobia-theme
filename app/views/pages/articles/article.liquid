@@ -1,0 +1,27 @@
+{% extends index %}
+
+{% block content %}
+
+    <div class="row">
+      <div class="span12">
+        <h2>{{ entry.title }}</h2>
+        <hr>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="span12">
+        <div class="row">
+          <div class="span7">
+            {{ entry.body }}
+          </div>
+
+          <div class="offset1 span4">
+            {% if entry.image.url %}<p><img src="{{ entry.image.url }}" class="thumbnail"></p>{% endif %}
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+{% endblock %}

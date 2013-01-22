@@ -1,0 +1,24 @@
+        <div class="home module media span3">
+          {% if media_object.type == "Image" %}
+            <a href="/media/{{ media_object._permalink}}">
+              <img src="{{ media_object.image.url | resize: '400x260#' }}" class="thumbnail">
+            </a>
+            <h3><a href="/media/{{ media_object._permalink}}"><i class="icon-picture icon-white"></i> {{ media_object.title}}</a></h3>
+          {% endif %}
+
+          {% if media_object.type == "Video" %}
+          {% capture default_image %} {{ 'no-video.png' | theme_image_url }} {% endcapture %}
+            <a href="/media/{{ media_object._permalink}}">
+              <img src="{{ media_object.image.url | default: default_image }}" class="thumbnail">
+            </a>
+            <h3><a href="/media/{{ media_object._permalink}}"><i class="icon-film icon-white"></i> {{ media_object.title}}</a></h3>
+          {% endif %}
+
+          {% if media_object.type == "Audio" %}
+            {% capture default_image %} {{ 'no-audio.png' | theme_image_url }} {% endcapture %}
+            <a href="/media/{{ media_object._permalink}}">
+              <img src="{{ media_object.image.url | default: default_image }}" class="thumbnail">
+            </a>
+            <h3><a href="/media/{{ media_object._permalink}}"><i class="icon-volume-up icon-white"></i> {{ media_object.title}}</a></h3>
+          {% endif %}
+        </div>

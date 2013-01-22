@@ -1,0 +1,22 @@
+name: Posts
+description: Blog Posts
+slug: posts
+order_by: created_at
+label_field_name: title
+fields:
+- title:
+    hint: The title of your blog post
+    required: true
+- excerpt:
+    type: text
+    hint: The short preview of your blog post
+- body:
+    type: text
+    hint: The main content of your blog post
+    text_formatting: html
+    required: true
+- categories:
+    type: many_to_many
+    target: categories
+    inverse_of: posts
+

@@ -1,0 +1,45 @@
+{% extends index %}
+
+{% block content %}
+
+    <div class="row">
+      <div class="span12">
+        <h2>{{ entry.title }}</h2>
+      </div>
+
+      <div class="span9">
+        <div class="blog-post row">
+            <div class="meta span2">
+              <dl>
+                <dt><p><i class="icon-calendar icon-white"></i> Date:</p></dt>
+                <dd>{{ entry.created_at }}</dd>
+                <dt><p><i class="icon-list icon-white"></i> Categories:</p></dt>
+                <dd>
+                {% for category in entry.categories %}
+                <a href="/categories/{{ category._permalink }}">{{ category.title }}</a>
+                {% endfor %}
+                </dd>
+              </dl>
+            </div>
+
+          <div class="entry span7">
+            {{ entry.body }}
+          </div>
+        </div>
+      </div>
+
+      <div class="blog-sidebar span3">
+        <div class="widget">
+          <h3 class="widget-title">Recent Posts</h3>
+          <ul class="nav">
+            {% for post in contents.posts, limit: 4 %}
+            <li><a href="/blog/{{ entry._permalink }}">{{ entry.title }}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+
+        {% include 'categories_list' %}
+      </div>
+    </div>
+
+{% endblock %}

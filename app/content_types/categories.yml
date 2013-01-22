@@ -1,0 +1,25 @@
+name: Categories
+description: Categories for organising content
+slug: categories
+order_by: title
+label_field_name: title
+fields:
+- title:
+    hint: The title of the category
+    required: true
+- description:
+    type: text
+    text_formatting: html
+    hint: what is this category all about?
+- posts:
+    type: many_to_many
+    target: posts
+    inverse_of: categories
+- articles:
+    type: many_to_many
+    target: articles
+    inverse_of: categories
+- templates:
+    type: many_to_many
+    target: templates
+    inverse_of: categories

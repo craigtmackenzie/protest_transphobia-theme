@@ -1,0 +1,25 @@
+name: Articles
+description: Article Resources
+slug: articles
+order_by: created_at
+label_field_name: title
+fields:
+- title:
+    hint: The title of your article
+    required: true
+- excerpt:
+    type: text
+    hint: The short preview of your article
+    required: true
+- body:
+    type: text
+    text_formatting: html
+    hint: The main content of your article
+    required: true
+- image:
+    type: file
+    hint: The main image associated with your article
+- categories:
+    type: many_to_many
+    target: categories
+    inverse_of: articles
